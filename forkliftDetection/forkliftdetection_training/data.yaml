@@ -1,0 +1,5 @@
+train: ../mnt/dataforkliftv19_small/dataforkliftv19_small/train/images
+val: ../mnt/dataforkliftv19_small/dataforkliftv19_small/valid/images
+
+nc: 2
+names: ['forklift', 'person']

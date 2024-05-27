@@ -1,0 +1,4 @@
+[kubernetes]
+queue=default
+image_repo = vaskostara/example
+

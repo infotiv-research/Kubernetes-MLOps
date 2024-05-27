@@ -1,0 +1,26 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: yolov5-detect-job
+spec:
+  template:
+    metadata:
+      name: yolov5-detect-job-pod
+    spec:
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory
+        - name: data-storage
+          persistentVolumeClaim:
+            claimName: yolov5-train-pv-claim
+      containers:
+      - name: yolov5-detect
+        image: vaskostara/example:yolov5-testing
+        volumeMounts:
+          - mountPath: /dev/shm
+            name: dshm
+          - mountPath: /usr/src/forkliftdetection/mnt
+            name: data-storage
+      restartPolicy: Never
+
